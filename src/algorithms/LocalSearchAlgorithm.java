@@ -10,15 +10,17 @@ import java.util.List;
 
 public class LocalSearchAlgorithm implements  LocalSearch  {
 
+    double bestDistLeft;
+    double bestDistRight;
 
 
 
     public List<List<Point>> getOptimalPath(List<Point> path1, List<Point> path2) {
         List<Point> newLeftPath;
-        double bestDistLeft = EuclideanDistance.pathLength(path1);
+        bestDistLeft = EuclideanDistance.pathLength(path1);
         double newDistLeft;
         List<Point> newRightPath;
-        double bestDistRight = EuclideanDistance.pathLength(path2);
+         bestDistRight = EuclideanDistance.pathLength(path2);
         double newDistRight;
         int swaps = 1;
         boolean test = false;
@@ -133,6 +135,13 @@ public class LocalSearchAlgorithm implements  LocalSearch  {
         return (ij+ji-ii-jj<0);
 
 
+
+    }
+
+
+    public double getMinimalPathLength(){
+
+        return  bestDistLeft+bestDistRight;
 
     }
 }

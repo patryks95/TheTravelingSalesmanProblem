@@ -28,7 +28,7 @@ public class Main extends Application {
         Visualisation.show(temp, points.get(0), points.get(1), "zadanie 1");
         points = ls.getOptimalPath( new ArrayList<>(points.get(0)), new ArrayList<>(points.get(1)));
         Visualisation.show(temp, points.get(0), points.get(1), "zadanie 2");
-        ILPAlgorithm ilp = new ILPAlgorithm();
+        ILPAlgorithm ilp = new ILPAlgorithm(ls);
         points = ilp.getOptimalPath(new ArrayList<>(points.get(0)), new ArrayList<>(points.get(1)));
         Visualisation.show(temp, points.get(0), points.get(1), "zadanie 3");
 
