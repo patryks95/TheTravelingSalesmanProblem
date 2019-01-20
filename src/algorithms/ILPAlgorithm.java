@@ -8,9 +8,6 @@ import java.util.List;
 
 public class ILPAlgorithm implements  LocalSearch  {
 
-
-
-
     public List<List<Point>> getOptimalPath(List<Point> path1, List<Point> path2) {
         List<Point> newLeftPath;
         double bestDistLeft = EuclideanDistance.pathLength(path1);
