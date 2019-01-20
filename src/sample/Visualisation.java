@@ -18,20 +18,20 @@ import java.util.List;
 
 public class Visualisation {
 
-    private static List<Circle> addPoints(List<Point> points){
+
+    private static List<Circle> addPoints(List<Point> points, List<Point> startPoints){
         List<Circle> circles = new ArrayList<>();
-        boolean first = true;
         for(Point  p:points){
             Circle circle = new Circle();
             circle.setCenterX(p.getX());
             circle.setCenterY(p.getY());
-            circle.setRadius(15);
-            if(first){
+            if(startPoints.contains(p)){
+                circle.setRadius(20);
                 circle.setFill(Color.RED);
-                first = false;
             }
             else {
-                circle.setFill(Color.GREEN);
+                circle.setRadius(15);
+                circle.setFill(Color.BLUE);
             }
             circles.add(circle);
 
@@ -39,7 +39,7 @@ public class Visualisation {
         return circles;
     }
 
-    private static List<Line> joinPoints(List<Point> path){
+    private static List<Line> joinPoints(List<Point> path, Color color){
 
         List<Line> lines = new ArrayList<>();
         for(int i=0; i<path.size(); i++){
@@ -53,7 +53,7 @@ public class Visualisation {
             line.setStartY(path.get(i).getY());
             line.setEndX(path.get(next).getX());
             line.setEndY(path.get(next).getY());
-            line.setStroke(Color.BLUE);
+            line.setStroke(color);
             line.setStrokeWidth(5);
             line.setVisible(true);
             scale.setX(0.3);
@@ -66,7 +66,7 @@ public class Visualisation {
         return lines;
     }
 
-    public static void show(List<Point> points, List<Point> path, List<Point> path2, String title) throws Exception{
+    public static void show(List<Point> points, List<Point> path1, List<Point> path2, String title){
         Stage primaryStage = new Stage();
         primaryStage.setWidth(1400);
         primaryStage.setHeight(800);
@@ -76,10 +76,17 @@ public class Visualisation {
         Pane root = new Pane();
         root.setBorder(new Border(new BorderStroke(Color.BLACK,
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-        List<Circle> circles = addPoints(points);
+        List<Point> startPoints = new ArrayList<>();
+        startPoints.add(path1.get(0));
+        try {
+            startPoints.add(path2.get(0));
+        }catch (Exception e){
+
+        }
+        List<Circle> circles = addPoints(points, startPoints);
         for(Circle circle:circles){
             Scale scale = new Scale();
-            Label label = new Label(Integer.toString(circles.indexOf(circle)));
+            Label label = new Label(Integer.toString(circles.indexOf(circle) + 1));
             final double MAX_FONT_SIZE = 10.0; // define max font size you need
             label.setFont(new Font(MAX_FONT_SIZE));
             scale.setX(0.3);
@@ -92,11 +99,11 @@ public class Visualisation {
             root.getChildren().add(circle);
             root.getChildren().add(label);
         }
-        for(Line line1:joinPoints(path)){
-            root.getChildren().add(line1);
+        for(Line line:joinPoints(path1, Color.GREEN)){
+            root.getChildren().add(line);
         }
-        for(Line line2:joinPoints(path2)){
-            root.getChildren().add(line2);
+        for(Line line:joinPoints(path2, Color.BLACK)){
+            root.getChildren().add(line);
         }
         Label label = new Label();
         label.setAlignment(Pos.CENTER);
@@ -108,5 +115,6 @@ public class Visualisation {
 
         primaryStage.show();
     }
+
 
 }

@@ -21,8 +21,21 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
 
-        List<Point> temp = PathTool.getPath("kroA100.tsp");
-        NearestNeighbor nn = new NearestNeighbor(temp);
+        for (int i = 0 ; i<10; i++) {
+            System.out.println("Iteracja: "+ i);
+            List<Point> temp = PathTool.getPath("kroA100.tsp");
+            NearestNeighbor nn = new NearestNeighbor(temp);
+            List<List<Point>> points = nn.getPaths();
+            Visualisation.show(temp, points.get(0), points.get(1), "Iteracja: "+i);
+
+
+
+        }
+
+
+
+
+       /* NearestNeighbor nn = new NearestNeighbor(temp);
         List<List<Point>> points =  nn.getPaths();
         LocalSearchAlgorithm ls = new LocalSearchAlgorithm();
         Visualisation.show(temp, points.get(0), points.get(1), "zadanie 1");
@@ -31,6 +44,8 @@ public class Main extends Application {
         ILPAlgorithm ilp = new ILPAlgorithm(ls);
         points = ilp.getOptimalPath(new ArrayList<>(points.get(0)), new ArrayList<>(points.get(1)));
         Visualisation.show(temp, points.get(0), points.get(1), "zadanie 3");
+
+        */
 
 
 
