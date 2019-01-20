@@ -10,10 +10,12 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import tools.PathTool;
 import tools.Point;
+import tools.Similarity;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Main extends Application {
 
@@ -34,6 +36,13 @@ public class Main extends Application {
         ILPAlgorithm ilp = new ILPAlgorithm();
         List<List<Point>> ilpPoints = ilp.getOptimalPath(new ArrayList<>(nnPoints.get(0)), new ArrayList<>(nnPoints.get(1)));
         Visualisation.show(input, ilpPoints.get(0), ilpPoints.get(1), "zadanie 3");
+
+        Similarity similarity = new Similarity(input);
+        similarity.run();
+        Map<Double, Double> allCostsEdges = similarity.getAllCostsEdges();
+//        for(Double key : allCostsEdges.keySet()) {
+//            System.out.println(key + "," + allCostsEdges.get(key));
+//        }
     }
 
     public static void main(String[] args) {
