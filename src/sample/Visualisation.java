@@ -86,15 +86,16 @@ public class Visualisation {
         List<Circle> circles = addPoints(points, startPoints);
         for(Circle circle:circles){
             Scale scale = new Scale();
-            Label label = new Label(Integer.toString(circles.indexOf(circle) + 1));
+
+            Label label = new Label(Integer.toString(points.get(circles.indexOf(circle)).id));
             final double MAX_FONT_SIZE = 10.0; // define max font size you need
             label.setFont(new Font(MAX_FONT_SIZE));
             scale.setX(0.3);
             scale.setY(0.3);
             scale.setPivotX(80);
             scale.setPivotY(40);
-            label.setLayoutX(circle.getCenterX()*0.3 + 40 );
-            label.setLayoutY(circle.getCenterY()*0.3 + 20 );
+            label.setLayoutX(circle.getCenterX()*0.3 + 50 );
+            label.setLayoutY(circle.getCenterY()*0.3 + 30 );
             circle.getTransforms().addAll(scale);
             root.getChildren().add(circle);
             root.getChildren().add(label);

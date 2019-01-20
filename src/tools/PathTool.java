@@ -33,10 +33,12 @@ public class PathTool {
 
         try (BufferedReader br = new BufferedReader(new FileReader("data/" + fileName))) {
             String line;
+            int it = 0;
             while ((line = br.readLine()) != null) {
                 if(line.matches("[0-9]{1,4} [0-9]{1,4} [0-9]{1,4}")) {
                     String[] splited = line.split(" ");
-                    points.add(new Point(Integer.parseInt(splited[1]), Integer.parseInt(splited[2])));
+                    points.add(new Point(Integer.parseInt(splited[1]), Integer.parseInt(splited[2]), it));
+                    it++;
                 }
             }
         } catch (IOException e) {

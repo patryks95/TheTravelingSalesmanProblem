@@ -44,6 +44,9 @@ public class ILPAlgorithm   {
             iteration++;
 
         }
+
+        System.out.println("ILP: ");
+        System.out.println(EuclideanDistance.pathLength(newPoints.get(0))+EuclideanDistance.pathLength(newPoints.get(1)));
         return  newPoints;
 
 

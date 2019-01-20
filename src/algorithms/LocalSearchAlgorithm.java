@@ -81,6 +81,8 @@ public class LocalSearchAlgorithm implements  LocalSearch  {
         List<List<Point>> lists = new ArrayList<List<Point>>();
         lists.add(path1);
         lists.add(path2);
+        System.out.println("Suma: ");
+        System.out.println(EuclideanDistance.pathLength(path1)+EuclideanDistance.pathLength(path2));
         return  lists;
 
 

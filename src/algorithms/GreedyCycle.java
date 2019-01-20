@@ -64,12 +64,13 @@ public class GreedyCycle   implements  Metaheuristic  {
                 rightPoints.add(point);
             }
 
-            System.out.println(points);
 
         }
         List<List<Point>> lists = new ArrayList<List<Point>>();
         lists.add(leftPoints);
         lists.add(rightPoints);
+        System.out.println("Suma: ");
+        System.out.println(EuclideanDistance.pathLength(rightPoints)+EuclideanDistance.pathLength(leftPoints));
         return  lists;
 
 

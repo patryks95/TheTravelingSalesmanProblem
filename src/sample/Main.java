@@ -21,12 +21,15 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
 
+
         for (int i = 0 ; i<10; i++) {
             System.out.println("Iteracja: "+ i);
-            List<Point> temp = PathTool.getPath("kroA100.tsp");
-            NearestNeighbor nn = new NearestNeighbor(temp);
+            List<Point> temp = PathTool.getPath("kroA150.tsp");
+            GreedyCycle nn = new GreedyCycle(temp);
             List<List<Point>> points = nn.getPaths();
             Visualisation.show(temp, points.get(0), points.get(1), "Iteracja: "+i);
+            System.out.println(PointListHelper.toString(points.get(0)));
+            System.out.println(PointListHelper.toString(points.get(1)));
 
 
 
