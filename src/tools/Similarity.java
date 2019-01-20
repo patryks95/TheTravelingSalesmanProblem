@@ -35,20 +35,20 @@ public class Similarity {
 
         for(int i = 0; i<allPaths.size(); i++) {
             List<List<Point>> path = allPaths.get(i);
-            int similarEdges = 0;
+            Double similarEdges = 0.0;
             List<List<Point>> pathPairs1 = generatePairs(path.get(0), path.get(1));
             for(List<List<Point>> path2: allPaths) {
                 if (path != path2) {
                     List<List<Point>> pathPairs2 = generatePairs(path2.get(0), path2.get(1));
-                    similarEdges += checkEdges(path, path2);
+                    similarEdges += checkEdges(pathPairs1, pathPairs2);
                 }
             }
             allCostsEdges.put(allCosts.get(i), similarEdges/999.0);
         }
     }
 
-    private int checkEdges(List<List<Point>> path1, List<List<Point>> path2) {
-        return (int) path1.stream().filter(path2::contains).count();
+    private int checkEdges(List<List<Point>> pair1, List<List<Point>> pair2) {
+        return (int) pair1.stream().filter(pair2::contains).count();
     }
 
     private List<List<Point>> generatePairs(List<Point> pathOne, List<Point> pathTwo) {

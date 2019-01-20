@@ -40,9 +40,9 @@ public class Main extends Application {
         Similarity similarity = new Similarity(input);
         similarity.run();
         Map<Double, Double> allCostsEdges = similarity.getAllCostsEdges();
-//        for(Double key : allCostsEdges.keySet()) {
-//            System.out.println(key + "," + allCostsEdges.get(key));
-//        }
+        for(Double key : allCostsEdges.keySet()) {
+            System.out.println(key + "," + allCostsEdges.get(key));
+        }
     }
 
     public static void main(String[] args) {
