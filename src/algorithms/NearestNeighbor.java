@@ -67,8 +67,8 @@ public class NearestNeighbor  implements  Metaheuristic {
         //System.out.println(EuclideanDistance.pathLength(leftPoints));
         //System.out.println("Najkrótsza prawa ścieżka");
         //System.out.println(EuclideanDistance.pathLength(rightPoints));
-        System.out.println("Suma: ");
-        System.out.println(EuclideanDistance.pathLength(rightPoints)+EuclideanDistance.pathLength(leftPoints));
+        //System.out.println("Suma: ");
+        //System.out.println(EuclideanDistance.pathLength(rightPoints)+EuclideanDistance.pathLength(leftPoints));
 
         return  lists;
 
